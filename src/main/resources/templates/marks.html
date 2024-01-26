@@ -113,7 +113,12 @@
         <tr>
           <th>Student</th>
           <th>Subject</th>
-          <th>Score</th>
+          <th>Score %</th>
+        </tr>
+        <tr th:object = "${mark}">
+          <td th:text="*{name}"></td>
+          <td th:text="*{Subject}"></td>
+          <td th:text="*{Score}"></td>
         </tr>
       </table>
     </div>
