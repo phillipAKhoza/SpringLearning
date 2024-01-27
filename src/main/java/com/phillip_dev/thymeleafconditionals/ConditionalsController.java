@@ -43,7 +43,19 @@ public class ConditionalsController {
         model.addAttribute("name", "Phillip");
         return "name-list";
     }
-    
+    @GetMapping(value="/learn")
+    public String getLandingPage() {
+        return "page";
+    }
+    @GetMapping(value="/home")
+    public String home() {
+        return "home";
+    }
+
+    @GetMapping(value="/away")
+    public String away() {
+        return "away";
+    }
     
 }
 
