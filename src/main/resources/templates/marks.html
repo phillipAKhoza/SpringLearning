@@ -19,10 +19,10 @@
           <th>Subject</th>
           <th>Score %</th>
         </tr>
-        <tr th:object = "${mark}">
-          <td th:text="*{name}"></td>
-          <td th:text="*{Subject}"></td>
-          <td th:text="*{Score}"></td>
+        <tr th:each = "mark: ${marks}">
+          <td th:text="${mark.name}"></td>
+          <td th:text="${mark.Subject}"></td>
+          <td th:text="${mark.score}"></td>
         </tr>
       </table>
     </div>
