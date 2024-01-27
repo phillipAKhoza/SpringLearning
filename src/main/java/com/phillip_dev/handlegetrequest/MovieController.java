@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 
 @Controller
 public class MovieController {
     @GetMapping("/")
-    public String getMovies() {
+    public ModelAndView getMovies() {
         // another way of adding a model, an old day infact
         Map<String, Show> model = new HashMap<String, Show>();
         model.put("show1", new Show("Breaking Bad","Ozymandias", 10.0));
@@ -20,7 +20,7 @@ public class MovieController {
         model.put("show3", new Show("Attack on Titan","Perfect Game", 9.9));
         model.put("show4", new Show("Star Wars: The Clone Wars","Victory and Death", 9.9));
          model.put("show5", new Show("Mr. Robot","407 Proxy Authentication Required", 9.9));
-         
+
         // How to add data to the model using the recent way
         // Show show1 = new Show("Breaking Bad","Ozymandias", 10.0);
         // Show show2 = new Show("Attack on Titan","Hero", 9.9);
@@ -32,7 +32,7 @@ public class MovieController {
         // model.addAttribute("show3", show3);
         // model.addAttribute("show4", show4);
         // model.addAttribute("show5", show5);
-        return "shows";
+        return new ModelAndView("shows", model);
     }
     
 }
