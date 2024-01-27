@@ -4,6 +4,23 @@
         <title>Conditionals</title>
     </head>
     <body>
-                <p th:if="${sales > 50}">sales are good!</p>
+                <!-- If operator -->
+                <h4 th:if="${sales > 50}">if oprator</h4>
+                <p th:if="${sales > 50}">Sales are good!</p>
+                <!-- unless operator /else -->
+                <h4 th:unless="${sales > 50}">unless/else oprator</h4>
+                <p th:unless="${sales > 50}">Sales are bad!</p>
+                <p>----------------------------------------</p>
+                 <!-- Ternary operator -->
+                <h4>Ternary oprator</h4>
+                <p th:text="${sales > 50} ? 'sales are good!' : 'sales are bad!'"></p>
+
+                <p>----------------------------------------</p>
+                <h4>Switch oprator</h4>
+                <div th:switch="${product}">
+                    <p th:case="'chair'">50</p>
+                    <p th:case="'tv'">70</p>
+                    <p th:case="*">no match</p>
+                </div>
     </body>
 </html>

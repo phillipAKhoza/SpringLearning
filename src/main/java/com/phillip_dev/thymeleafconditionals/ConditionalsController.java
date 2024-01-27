@@ -5,13 +5,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
+
 @Controller
 public class ConditionalsController {
     @GetMapping("/")
-    public String getMethodName(Model model) {
+    public String getConditionals(Model model) {
         model.addAttribute("sales", 100);
+        model.addAttribute("product", "chair");
 
         return "conditionals";
     }
+    @GetMapping("/sign")
+    public String getSign(Model model) {
+        model.addAttribute("speed", 65);
+        return "sign";
+    }
     
 }
+
