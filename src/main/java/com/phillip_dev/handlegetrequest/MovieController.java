@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MovieController {
     @GetMapping("/")
     public ModelAndView getMovies() {
+        // there a two ways to add data to the model the bellow and the commented one bellow the working one
         // another way of adding a model, an old day infact
         Map<String, Show> model = new HashMap<String, Show>();
         model.put("show1", new Show("Breaking Bad","Ozymandias", 10.0));
@@ -21,7 +22,7 @@ public class MovieController {
         model.put("show4", new Show("Star Wars: The Clone Wars","Victory and Death", 9.9));
          model.put("show5", new Show("Mr. Robot","407 Proxy Authentication Required", 9.9));
 
-        // How to add data to the model using the recent way
+        // How to add data to the model using the recent  way. this required the model passed to the handler getMovies(Model model)
         // Show show1 = new Show("Breaking Bad","Ozymandias", 10.0);
         // Show show2 = new Show("Attack on Titan","Hero", 9.9);
         // Show show3 = new Show("Attack on Titan","Perfect Game", 9.9);
