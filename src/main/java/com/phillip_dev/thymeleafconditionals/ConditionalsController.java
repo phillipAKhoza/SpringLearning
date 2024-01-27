@@ -3,7 +3,7 @@ package com.phillip_dev.thymeleafconditionals;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -28,11 +28,22 @@ public class ConditionalsController {
         return "painting";
     }
     @GetMapping("/dealership")
-    public String getMethodName(Model model) {
+    public String getCars(Model model) {
         model.addAttribute("budget", 10000 );
         model.addAttribute("make", "Subaru");
         return "dealership";
     }
+    @GetMapping("/utility")
+    public String getUtility(Model model) {
+        model.addAttribute("menu", "We sell chocolate rice cakes bubble tea");
+        return "view";
+    }
+    @GetMapping("/name")
+    public String getMethodName(Model model) {
+        model.addAttribute("name", "Phillip");
+        return "name-list";
+    }
+    
     
 }
 
