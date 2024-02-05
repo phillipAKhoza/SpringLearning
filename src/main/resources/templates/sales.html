@@ -15,11 +15,11 @@
             <td>Cost</td>
             <td>Profit</td>
         </tr>
-        <tr th:each="sale : ${sales}">
+        <tr th:each="sale : ${sales}" >
             <td th:text="${sale.item}"></td>
             <td th:text="${#numbers.formatCurrency(sale.revenue)}"></td>
             <td th:text="${#numbers.formatCurrency(sale.cost)}"></td>
-            <td th:text="${#numbers.formatCurrency(sale.revenue - sale.cost)}"></td>
+            <td th:text="${#numbers.formatCurrency(sale.revenue - sale.cost)}" th:style=" ${sale.revenue- sale.cost >= 0} ? 'background: green' : 'background: red'"></td>
         </tr>
        </table>
     </body>
