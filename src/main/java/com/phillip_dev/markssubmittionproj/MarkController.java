@@ -33,7 +33,7 @@ public class MarkController {
     public String submitForm(Mark mark) {
         studentMarks.add(mark);
         
-        return "abc";
+        return "redirect:/marks";
     }
     
     
