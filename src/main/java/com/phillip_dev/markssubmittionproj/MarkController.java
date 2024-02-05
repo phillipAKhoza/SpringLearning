@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class MarkController {
     List<Mark> studentMarks = Arrays.asList(
@@ -21,4 +22,11 @@ public class MarkController {
         model.addAttribute("marks",studentMarks);
         return "marks";
     }
+
+    @GetMapping("/form")
+    public String markForm(Model model) {
+        model.addAttribute("mark", new Mark());
+        return "form";
+    }
+    
 }
