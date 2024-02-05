@@ -1,14 +1,12 @@
 package com.phillip_dev.markssubmittionproj;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -26,7 +24,8 @@ public class MarkController {
 
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String name) {
-        model.addAttribute("mark", new Mark());
+        
+        model.addAttribute("mark",getMarkIndex(name) == -1 ? new Mark() : studentMarks.get(getMarkIndex(name)));
         return "form";
     }
 
@@ -37,5 +36,11 @@ public class MarkController {
         return "redirect:/marks";
     }
     
+    public Integer getMarkIndex(String name){
+        for(int i =0; i < studentMarks.size(); i++ ){
+            if(studentMarks.get(i).getName().equals(name)) return i;
+        }
+        return -1;
+    }
     
 }
