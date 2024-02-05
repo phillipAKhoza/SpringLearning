@@ -30,8 +30,7 @@ public class MarkController {
     }
 
     @PostMapping("/handleSubmit")
-    public String submitMark(Mark mark) {
-        System.err.println(mark);
+    public String submitForm(Mark mark) {
         studentMarks.add(mark);
         
         return "abc";
