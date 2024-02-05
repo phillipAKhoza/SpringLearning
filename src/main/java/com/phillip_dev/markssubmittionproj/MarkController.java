@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -24,7 +25,7 @@ public class MarkController {
     }
 
     @GetMapping("/")
-    public String markForm(Model model) {
+    public String markForm(Model model, @RequestParam(required = false) String name) {
         model.addAttribute("mark", new Mark());
         return "form";
     }
