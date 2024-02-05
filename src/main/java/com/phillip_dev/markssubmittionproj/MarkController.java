@@ -31,7 +31,13 @@ public class MarkController {
 
     @PostMapping("/handleSubmit")
     public String submitForm(Mark mark) {
-        studentMarks.add(mark);
+        int index = getMarkIndex(mark.getName());
+        if(index == -1){
+          studentMarks.add(mark);
+        }else{
+            studentMarks.set(index, mark);
+        }
+        
         
         return "redirect:/marks";
     }
