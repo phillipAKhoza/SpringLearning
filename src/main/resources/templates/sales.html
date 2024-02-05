@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns="www.thymleaf.">
+<html xmlns="http://www.thymeleaf.org">
     <head>
         
         <title>Sales</title>
@@ -8,18 +8,18 @@
     </head>
     <body>
        <h2>Sales Records</h2>
-       <table>
+       <table border="solid" width="100%">
         <tr>
             <td>Item</td>
             <td>Revenue</td>
             <td>Cost</td>
             <td>Profit</td>
         </tr>
-        <tr th:each="record : ${records}">
-            <td th:text="${record.item}"></td>
-            <td th:text="${record.revenue}"></td>
-            <td th:text="${record.cost}"></td>
-            <td th:text="${record.cost}"></td>
+        <tr th:each="sale : ${sales}">
+            <td th:text="${sale.item}"></td>
+            <td th:text="${#numbers.formatCurrency(sale.revenue)}"></td>
+            <td th:text="${#numbers.formatCurrency(sale.cost)}"></td>
+            <td th:text="${#numbers.formatCurrency(sale.revenue - sale.cost)}"></td>
         </tr>
        </table>
     </body>
