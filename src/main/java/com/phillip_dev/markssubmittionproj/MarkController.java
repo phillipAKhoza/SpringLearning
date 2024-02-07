@@ -23,15 +23,15 @@ public class MarkController {
     }
 
     @GetMapping("/")
-    public String markForm(Model model, @RequestParam(required = false) String name) {
+    public String markForm(Model model, @RequestParam(required = false) String id) {
         
-        model.addAttribute("mark",getMarkIndex(name) == -1 ? new Mark() : studentMarks.get(getMarkIndex(name)));
+        model.addAttribute("mark",getMarkIndex(id) == -1 ? new Mark() : studentMarks.get(getMarkIndex(id)));
         return "form";
     }
 
     @PostMapping("/handleSubmit")
     public String submitForm(Mark mark) {
-        int index = getMarkIndex(mark.getName());
+        int index = getMarkIndex(mark.getId());
         if(index == -1){
           studentMarks.add(mark);
         }else{
@@ -42,9 +42,9 @@ public class MarkController {
         return "redirect:/marks";
     }
     
-    public Integer getMarkIndex(String name){
+    public Integer getMarkIndex(String id){
         for(int i =0; i < studentMarks.size(); i++ ){
-            if(studentMarks.get(i).getName().equals(name)) return i;
+            if(studentMarks.get(i).getId().equals(id)) return i;
         }
         return -1;
     }
