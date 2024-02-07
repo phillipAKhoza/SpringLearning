@@ -24,6 +24,8 @@ public class MarkController {
 
     // this is the form request handler. when the user whats to either capture new or edit data we call this form
     // the form has a parameter which is an id for updating existing data
+    // the form parameter is not required so we can cater for new creation of data
+    // upon the calling of the method we check if the data exists or not if it exist we sent the data to the form
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String id) {
         int index =getMarkIndex(id);
