@@ -28,7 +28,8 @@ public class MarkController {
         model.addAttribute("mark",index == Constants.NOT_FOUND ? new Mark() : studentMarks.get(index));
         return "form";
     }
-
+    // this is a handler called when you submit the form
+    // the handler will get the model of the submited form
     @PostMapping("/handleSubmit")
     public String submitForm(Mark mark) {
         int index = getMarkIndex(mark.getId());
