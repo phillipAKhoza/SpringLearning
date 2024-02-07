@@ -33,6 +33,8 @@ public class MarkController {
     @PostMapping("/handleSubmit")
     public String submitForm(Mark mark) {
         int index = getMarkIndex(mark.getId());
+        // first you need to check if the data being submitted exits or not and we check that via a getMarkIndex method
+        // if the data exits we update .set if not we add .add
         if(index == Constants.NOT_FOUND){
           studentMarks.add(mark);
         }else{
