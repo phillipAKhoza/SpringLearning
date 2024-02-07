@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MarkController {
     List<Mark> studentMarks = new ArrayList<>();
-
+    // this method only handles the data that needs to be displayed
     @GetMapping("/marks")
     public String getMarks(Model model){
     
