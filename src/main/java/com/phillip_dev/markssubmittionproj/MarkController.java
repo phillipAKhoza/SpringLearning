@@ -22,6 +22,8 @@ public class MarkController {
         return "marks";
     }
 
+    // this is the form request handler. when the user whats to either capture new or edit data we call this form
+    // the form has a parameter which is an id for updating existing data
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String id) {
         int index =getMarkIndex(id);
