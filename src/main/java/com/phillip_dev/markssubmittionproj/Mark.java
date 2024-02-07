@@ -1,18 +1,15 @@
 package com.phillip_dev.markssubmittionproj;
 
+import java.util.UUID;
+
 public class Mark {
     private String name;
     private String subject;
     private int score;
-
-
-    public Mark(String name, String subject, int score) {
-        this.name = name;
-        this.subject = subject;
-        this.score = score;
-    }
+    private String id;
 
     public Mark() {
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getName() {
@@ -37,6 +34,14 @@ public class Mark {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }
