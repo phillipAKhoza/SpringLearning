@@ -26,6 +26,7 @@ public class MarkController {
     // the form has a parameter which is an id for updating existing data
     // the form parameter is not required so we can cater for new creation of data
     // upon the calling of the method we check if the data exists or not if it exist we sent the data to the form
+    // if the data doesnt exit we create a new mark object
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String id) {
         int index =getMarkIndex(id);
