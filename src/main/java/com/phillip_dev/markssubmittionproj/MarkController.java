@@ -24,8 +24,8 @@ public class MarkController {
 
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String id) {
-        
-        model.addAttribute("mark",getMarkIndex(id) == Constants.NOT_FOUND ? new Mark() : studentMarks.get(getMarkIndex(id)));
+        int index =getMarkIndex(id);
+        model.addAttribute("mark",index == Constants.NOT_FOUND ? new Mark() : studentMarks.get(index));
         return "form";
     }
 
