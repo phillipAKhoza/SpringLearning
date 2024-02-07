@@ -41,10 +41,11 @@ public class MarkController {
             studentMarks.set(index, mark);
         }
         
-        
+        // after the add/update has been done we perform a redirect tot the marks screen
         return "redirect:/marks";
     }
-    
+    // this is a methose that checks if data exists. we iterate on the array list and compare the ids and if the id is fount we return it
+    // if the id is not found we return a 404 constatnt
     public Integer getMarkIndex(String id){
         for(int i =0; i < studentMarks.size(); i++ ){
             if(studentMarks.get(i).getId().equals(id)) return i;
