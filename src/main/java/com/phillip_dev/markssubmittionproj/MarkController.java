@@ -25,14 +25,14 @@ public class MarkController {
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String id) {
         
-        model.addAttribute("mark",getMarkIndex(id) == -1 ? new Mark() : studentMarks.get(getMarkIndex(id)));
+        model.addAttribute("mark",getMarkIndex(id) == Constants.NOT_FOUND ? new Mark() : studentMarks.get(getMarkIndex(id)));
         return "form";
     }
 
     @PostMapping("/handleSubmit")
     public String submitForm(Mark mark) {
         int index = getMarkIndex(mark.getId());
-        if(index == -1){
+        if(index == Constants.NOT_FOUND){
           studentMarks.add(mark);
         }else{
             studentMarks.set(index, mark);
@@ -46,7 +46,7 @@ public class MarkController {
         for(int i =0; i < studentMarks.size(); i++ ){
             if(studentMarks.get(i).getId().equals(id)) return i;
         }
-        return -1;
+        return Constants.NOT_FOUND;
     }
     
 }
