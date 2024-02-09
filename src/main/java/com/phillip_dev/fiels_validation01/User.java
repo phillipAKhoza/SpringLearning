@@ -2,11 +2,22 @@ package com.phillip_dev.fiels_validation01;
 
 import java.util.Date;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 public class User {
+    @NotBlank(message = "First name cannot be blank")
+    @Size(min = 2, message = "First name too short")
     private String firstName;
     private String lastName;
+    @NotBlank(message = "Username cannot be blank")
+    @Size(min = 7, message = "Username too short, must have 7+ characters")
     private String userName;
+    @Email(message = "email is not valid")
     private String email;
+    @Past(message = "D.O.B must be in the past")
     private Date detaOfBirth;
 
 
