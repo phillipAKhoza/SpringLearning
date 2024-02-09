@@ -17,6 +17,7 @@ public class User {
     @NotBlank(message = "Username cannot be blank")
     @Size(min = 7, message = "Username too short, must have 7+ characters")
     private String userName;
+    @NotBlank(message = "email cannot be blank")
     @Email(message = "email is not valid")
     private String email;
     @Past(message = "D.O.B must be in the past")
