@@ -17,7 +17,7 @@
                 <input type="text" placeholder="Email" th:field="*{email}">
                 <p style="color:red" th:errors="*{email}"></p>
                 <p style="font-weight: bold;">Date of Birth</p>
-                <input type="date" th:field="*{#dates.format(detaOfBirth, 'yyyy-mm-dd)'}">
+                <input type="date" th:field="*{detaOfBirth}">
                 <p style="color:red" th:errors="*{detaOfBirth}"></p>
                 <br><br>
                 <input type="submit" placeholder="Last Name">
