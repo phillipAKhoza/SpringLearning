@@ -2,6 +2,8 @@ package com.phillip_dev.fiels_validation01;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -18,6 +20,7 @@ public class User {
     @Email(message = "email is not valid")
     private String email;
     @Past(message = "D.O.B must be in the past")
+    @DateTimeFormat(pattern =  "yyyy-mm-dd")
     private Date detaOfBirth;
 
 
