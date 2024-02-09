@@ -25,6 +25,7 @@ public class SocialController {
     
     @PostMapping("/submitUser")
     public String submitForm(@Valid User user, BindingResult result) {
+        if(user.getFirstName().equals(user.getLastName()))  result.rejectValue("lastName", "", "Please enter valid data");
         if(result.hasErrors()) return "sign-up";
         
         
