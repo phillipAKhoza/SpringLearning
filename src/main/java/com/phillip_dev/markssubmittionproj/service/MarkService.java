@@ -3,13 +3,13 @@ package com.phillip_dev.markssubmittionproj.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.phillip_dev.markssubmittionproj.Constants;
 import com.phillip_dev.markssubmittionproj.Mark;
 import com.phillip_dev.markssubmittionproj.repository.MarkRepository;
 
-@Component
+@Service
 public class MarkService {
   @Autowired
     MarkRepository markRepository;

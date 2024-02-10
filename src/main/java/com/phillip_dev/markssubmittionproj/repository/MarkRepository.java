@@ -3,10 +3,11 @@ package com.phillip_dev.markssubmittionproj.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+
+import org.springframework.stereotype.Repository;
 
 import com.phillip_dev.markssubmittionproj.Mark;
-@Component
+@Repository
 public class MarkRepository {
    private List<Mark> studentMarks = new ArrayList<>();
 
