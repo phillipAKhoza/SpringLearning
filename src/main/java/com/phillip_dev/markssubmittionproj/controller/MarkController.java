@@ -1,4 +1,4 @@
-package com.phillip_dev.markssubmittionproj;
+package com.phillip_dev.markssubmittionproj.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import jakarta.validation.Valid;
 
 @Controller
 public class MarkController {
-    List<Mark> studentMarks = new ArrayList<>();
+    
     // this method only handles the data that needs to be displayed
     @GetMapping("/marks")
     public String getMarks(Model model){
