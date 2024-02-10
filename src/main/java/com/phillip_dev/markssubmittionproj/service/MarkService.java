@@ -33,4 +33,21 @@ public class MarkService {
         }
         return Constants.NOT_FOUND;
    }
+    //  the method we check if the data exists or not if it exist we sent the data to the form
+    // if the data doesnt exit we create a new mark object
+   public Mark getMarkById(String id){
+    int index = getMarkIndex(id);
+        return index == Constants.NOT_FOUND ? new Mark() : getMark(index);
+   }
+
+   public void submitMark(Mark mark){
+    int index = getMarkIndex(mark.getId());
+    // first you need to check if the data being submitted exits or not and we check that via a getMarkIndex method
+    // if the data exits we update .set if not we add .add
+    if(index == Constants.NOT_FOUND){
+        addMark(mark);
+    }else{
+        updateMark(index, mark);
+    }
+   }
 }

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.phillip_dev.markssubmittionproj.Constants;
 import com.phillip_dev.markssubmittionproj.Mark;
 import com.phillip_dev.markssubmittionproj.service.MarkService;
 
@@ -32,28 +31,18 @@ public class MarkController {
     // this is the form request handler. when the user whats to either capture new or edit data we call this form
     // the form has a parameter which is an id for updating existing data
     // the form parameter is not required so we can cater for new creation of data
-    // upon the calling of the method we check if the data exists or not if it exist we sent the data to the form
-    // if the data doesnt exit we create a new mark object
+
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String id) {
-        int index = markService.getMarkIndex(id);
-        model.addAttribute("mark",index == Constants.NOT_FOUND ? new Mark() : markService.getMark(index));
+        model.addAttribute("mark",markService.getMarkById(id));
         return "form";
     }
+
     // this is a handler called when you submit the form
-    // the handler will get the model of the submited form
+    // the handler will get the object of the submited form
     @PostMapping("/handleSubmit")
     public String submitForm(@Valid Mark mark, BindingResult result) {
-        int index = markService.getMarkIndex(mark.getId());
-        // first you need to check if the data being submitted exits or not and we check that via a getMarkIndex method
-        // if the data exits we update .set if not we add .add
-        if(result.hasErrors()) return "form";
-        if(index == Constants.NOT_FOUND){
-            markService.addMark(mark);
-        }else{
-            markService.updateMark(index, mark);
-        }
-        
+        markService.submitMark(mark);
         // after the add/update has been done we perform a redirect tot the marks screen
         return "redirect:/marks";
     }
