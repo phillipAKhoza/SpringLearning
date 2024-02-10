@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.phillip_dev.markssubmittionproj.Constants;
+import com.phillip_dev.markssubmittionproj.Mark;
+import com.phillip_dev.markssubmittionproj.repository.MarkRepository;
+
 import jakarta.validation.Valid;
 
 
 
 @Controller
 public class MarkController {
-    
+    MarkRepository markRepository = new MarkRepository();
     // this method only handles the data that needs to be displayed
     @GetMapping("/marks")
     public String getMarks(Model model){
@@ -33,7 +37,7 @@ public class MarkController {
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String id) {
         int index =getMarkIndex(id);
-        model.addAttribute("mark",index == Constants.NOT_FOUND ? new Mark() : studentMarks.get(index));
+        model.addAttribute("mark",index == Constants.NOT_FOUND ? new Mark() : markRepository.getMark(index));
         return "form";
     }
     // this is a handler called when you submit the form
@@ -45,7 +49,7 @@ public class MarkController {
         // if the data exits we update .set if not we add .add
         if(result.hasErrors()) return "form";
         if(index == Constants.NOT_FOUND){
-          studentMarks.add(mark);
+          markRepository.addMark(mark);
         }else{
             studentMarks.set(index, mark);
         }
