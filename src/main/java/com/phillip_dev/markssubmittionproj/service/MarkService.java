@@ -2,6 +2,7 @@ package com.phillip_dev.markssubmittionproj.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.phillip_dev.markssubmittionproj.Constants;
@@ -10,8 +11,8 @@ import com.phillip_dev.markssubmittionproj.repository.MarkRepository;
 
 @Component
 public class MarkService {
-
-    MarkRepository markRepository = new MarkRepository();
+  @Autowired
+    MarkRepository markRepository;
 
    public Mark getMark(int index){
      return markRepository.getMark(index);
