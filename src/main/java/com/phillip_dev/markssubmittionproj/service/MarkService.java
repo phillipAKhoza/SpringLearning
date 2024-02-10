@@ -2,10 +2,13 @@ package com.phillip_dev.markssubmittionproj.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.phillip_dev.markssubmittionproj.Constants;
 import com.phillip_dev.markssubmittionproj.Mark;
 import com.phillip_dev.markssubmittionproj.repository.MarkRepository;
 
+@Component
 public class MarkService {
 
     MarkRepository markRepository = new MarkRepository();

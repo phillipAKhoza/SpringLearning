@@ -1,5 +1,6 @@
 package com.phillip_dev.markssubmittionproj.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,8 +17,8 @@ import jakarta.validation.Valid;
 
 @Controller
 public class MarkController {
-
-    MarkService markService = new MarkService();
+    @Autowired
+    MarkService markService;
 
 
     // this method only handles the data that needs to be displayed
