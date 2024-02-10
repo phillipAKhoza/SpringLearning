@@ -1,8 +1,5 @@
 package com.phillip_dev.markssubmittionproj.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,8 +57,8 @@ public class MarkController {
     // this is a methose that checks if data exists. we iterate on the array list and compare the ids and if the id is fount we return it
     // if the id is not found we return a 404 constatnt
     public Integer getMarkIndex(String id){
-        for(int i =0; i < studentMarks.size(); i++ ){
-            if(studentMarks.get(i).getId().equals(id)) return i;
+        for(int i =0; i < markRepository.getMarks().size(); i++ ){
+            if(markRepository.getMarks().get(i).getId().equals(id)) return i;
         }
         return Constants.NOT_FOUND;
     }
