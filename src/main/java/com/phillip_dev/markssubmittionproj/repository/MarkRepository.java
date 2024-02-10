@@ -15,4 +15,10 @@ public class MarkRepository {
    public void addMark(Mark mark){
     studentMarks.add(mark);
    }
+   public void updateMark(int index, Mark mark){
+    studentMarks.set(index, mark);
+   }
+   public List<Mark> getMarks(){
+    return studentMarks;
+   }
 }

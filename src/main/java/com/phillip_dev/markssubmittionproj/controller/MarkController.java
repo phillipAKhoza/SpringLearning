@@ -25,7 +25,7 @@ public class MarkController {
     @GetMapping("/marks")
     public String getMarks(Model model){
     
-        model.addAttribute("marks",studentMarks);
+        model.addAttribute("marks",markRepository.getMarks());
         return "marks";
     }
 
@@ -51,7 +51,7 @@ public class MarkController {
         if(index == Constants.NOT_FOUND){
           markRepository.addMark(mark);
         }else{
-            studentMarks.set(index, mark);
+            markRepository.updateMark(index, mark);
         }
         
         // after the add/update has been done we perform a redirect tot the marks screen
