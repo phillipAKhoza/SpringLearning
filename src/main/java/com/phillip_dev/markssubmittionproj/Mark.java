@@ -9,6 +9,7 @@ public class Mark {
     private String name;
     @NotBlank(message = "Subject cannot be blank")
     private String subject;
+    @Score(message = "Score must be between 0 and 100")
     private int score;
     private String id;
 
