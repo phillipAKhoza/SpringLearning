@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.phillip_dev.markssubmittionproj.Constants;
 import com.phillip_dev.markssubmittionproj.Mark;
-import com.phillip_dev.markssubmittionproj.repository.MarkRepository;
+import com.phillip_dev.markssubmittionproj.service.MarkService;
 
 import jakarta.validation.Valid;
 
@@ -17,12 +17,15 @@ import jakarta.validation.Valid;
 
 @Controller
 public class MarkController {
-    MarkRepository markRepository = new MarkRepository();
+
+    MarkService markService = new MarkService();
+
+
     // this method only handles the data that needs to be displayed
     @GetMapping("/marks")
     public String getMarks(Model model){
     
-        model.addAttribute("marks",markRepository.getMarks());
+        model.addAttribute("marks",markService.getMarks());
         return "marks";
     }
 
@@ -33,34 +36,27 @@ public class MarkController {
     // if the data doesnt exit we create a new mark object
     @GetMapping("/")
     public String markForm(Model model, @RequestParam(required = false) String id) {
-        int index =getMarkIndex(id);
-        model.addAttribute("mark",index == Constants.NOT_FOUND ? new Mark() : markRepository.getMark(index));
+        int index = markService.getMarkIndex(id);
+        model.addAttribute("mark",index == Constants.NOT_FOUND ? new Mark() : markService.getMark(index));
         return "form";
     }
     // this is a handler called when you submit the form
     // the handler will get the model of the submited form
     @PostMapping("/handleSubmit")
     public String submitForm(@Valid Mark mark, BindingResult result) {
-        int index = getMarkIndex(mark.getId());
+        int index = markService.getMarkIndex(mark.getId());
         // first you need to check if the data being submitted exits or not and we check that via a getMarkIndex method
         // if the data exits we update .set if not we add .add
         if(result.hasErrors()) return "form";
         if(index == Constants.NOT_FOUND){
-          markRepository.addMark(mark);
+            markService.addMark(mark);
         }else{
-            markRepository.updateMark(index, mark);
+            markService.updateMark(index, mark);
         }
         
         // after the add/update has been done we perform a redirect tot the marks screen
         return "redirect:/marks";
     }
-    // this is a methose that checks if data exists. we iterate on the array list and compare the ids and if the id is fount we return it
-    // if the id is not found we return a 404 constatnt
-    public Integer getMarkIndex(String id){
-        for(int i =0; i < markRepository.getMarks().size(); i++ ){
-            if(markRepository.getMarks().get(i).getId().equals(id)) return i;
-        }
-        return Constants.NOT_FOUND;
-    }
+
     
 }
