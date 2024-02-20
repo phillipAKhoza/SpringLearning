@@ -36,4 +36,14 @@ public class MarkServiceTest {
         assertEquals("Phillip", result.get(0).getName());
         assertEquals("DSO", result.get(1).getSubject());
     }
+
+    @Test
+    public void getMarkIndexTest(){
+        when(markRepository.getMarks()).thenReturn(Arrays.asList(
+            new Mark("Phillip", "OOP", 90),
+            new Mark("Nkateko", "DSO", 80)
+        ));
+
+
+    }
 }
