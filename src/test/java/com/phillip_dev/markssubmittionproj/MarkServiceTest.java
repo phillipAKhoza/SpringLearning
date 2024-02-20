@@ -56,4 +56,9 @@ public class MarkServiceTest {
         assertEquals(Constants.NOT_FOUND, invalidIndex);
 
     }
+
+    @Test
+    public void getMarkByIdTest(){
+        
+    }
 }
