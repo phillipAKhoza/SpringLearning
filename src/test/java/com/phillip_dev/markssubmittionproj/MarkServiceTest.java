@@ -59,6 +59,14 @@ public class MarkServiceTest {
 
     @Test
     public void getMarkByIdTest(){
-        
+        Mark mark =new Mark("Phillip", "OOP", 90);
+        when(markRepository.getMarks()).thenReturn(Arrays.asList(
+            mark
+        ));
+        when(markRepository.getMark(0)).thenReturn(mark);
+
+        String id = mark.getId();
+
+        assertEquals(mark.getId(), markService.getMarkById(id).getId());
     }
 }
