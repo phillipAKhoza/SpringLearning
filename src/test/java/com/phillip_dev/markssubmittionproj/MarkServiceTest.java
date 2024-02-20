@@ -1,5 +1,6 @@
 package com.phillip_dev.markssubmittionproj;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -31,5 +32,8 @@ public class MarkServiceTest {
         ));
 
         List<Mark> result = markService.getMarks();
+
+        assertEquals("Phillip", result.get(0).getName());
+        assertEquals("DSO", result.get(1).getSubject());
     }
 }
