@@ -1,5 +1,6 @@
 package com.phillip_dev.markssubmittionproj;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,4 +17,9 @@ public class MarkServiceTest {
 
     @InjectMocks
     private MarkService markService;
+
+    @Test
+    public void getMarksFromRepoTest(){
+        
+    }
 }
