@@ -1,6 +1,7 @@
 package com.phillip_dev.markssubmittionproj;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -39,11 +40,20 @@ public class MarkServiceTest {
 
     @Test
     public void getMarkIndexTest(){
+       Mark mark =new Mark("Phillip", "OOP", 90);
         when(markRepository.getMarks()).thenReturn(Arrays.asList(
-            new Mark("Phillip", "OOP", 90),
-            new Mark("Nkateko", "DSO", 80)
+            mark
         ));
+        when(markRepository.getMark(0)).thenReturn(mark);
+        
+        
+        int index = markService.getMarkIndex(mark.getId());
+        int invalidIndex = markService.getMarkIndex("213243");
 
+
+
+        assertEquals(0, index);
+        assertEquals(Constants.NOT_FOUND, invalidIndex);
 
     }
 }
