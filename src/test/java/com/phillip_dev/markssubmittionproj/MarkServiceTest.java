@@ -1,5 +1,10 @@
 package com.phillip_dev.markssubmittionproj;
 
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -20,6 +25,11 @@ public class MarkServiceTest {
 
     @Test
     public void getMarksFromRepoTest(){
-        
+        when(markRepository.getMarks()).thenReturn(Arrays.asList(
+            new Mark("Phillip", "OOP", 90),
+            new Mark("Nkateko", "DSO", 80)
+        ));
+
+        List<Mark> result = markService.getMarks();
     }
 }
