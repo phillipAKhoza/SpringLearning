@@ -17,10 +17,17 @@ public class Mark {
         this.id = UUID.randomUUID().toString();
     }
 
+    public Mark(String name, String subject, int score) {
+        this.name = name;
+        this.subject = subject;
+        this.score = score;
+        
+    }
+
     public String getName() {
         return this.name;
     }
-
+ 
     public void setName(String name) {
         this.name = name;
     }
